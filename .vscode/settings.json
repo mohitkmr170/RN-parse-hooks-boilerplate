@@ -1,5 +1,10 @@
 {
-    "editor.formatOnSave": true,
-    "prettier.semi": false
-    "java.configuration.updateBuildConfiguration": "automatic"
+  "editor.formatOnSave": true,
+  "prettier.semi": false,
+  "editor.tabSize": 1,
+  "editor.autoIndent": "none",
+  "eslint.run": "onSave",
+  "files.autoSave": "afterDelay",
+  "eslint.validate": ["javascript", "typescript"],
+  "java.configuration.updateBuildConfiguration": "automatic"
 }
