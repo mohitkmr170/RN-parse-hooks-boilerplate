@@ -1,1 +1,3 @@
-export const NAVIGATION_CONTAINER_NAME = {};
+export const NavigationContainerName = {
+  Landing: 'LandingScreen',
+};
