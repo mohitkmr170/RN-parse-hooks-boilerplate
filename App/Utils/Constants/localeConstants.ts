@@ -1,1 +1,3 @@
-export const LOCALE_STRING = {};
+export const LocaleString = {
+  LandingScreen: 'landing.landingScreen',
+};
