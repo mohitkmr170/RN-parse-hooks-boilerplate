@@ -2,7 +2,6 @@
   "editor.formatOnSave": true,
   "prettier.semi": false,
   "editor.tabSize": 1,
-  "editor.autoIndent": "none",
   "eslint.run": "onSave",
   "files.autoSave": "afterDelay",
   "eslint.validate": ["javascript", "typescript"],
