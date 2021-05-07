@@ -12,8 +12,8 @@ export const Landing = (props: ILandingProps) => {
       <Text>{LocaleString.LandingScreen}</Text>
       <View
         style={{
-          height: MetricsSizes.extraLargeHumongous,
-          width: MetricsSizes.extraLargeHumongous,
+          height: 3 * MetricsSizes.hugest,
+          width: 3 * MetricsSizes.hugest,
           backgroundColor: 'red',
           marginTop: 40,
         }}
