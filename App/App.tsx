@@ -10,6 +10,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {RootNavigator} from 'App/Navigators/navigationContainer';
 import {setNavigator} from 'App/Navigators/navigationServices';
+import {StoreProvider} from 'App/Context/Counter/context';
 
 const App: () => ReactNode = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,7 +23,9 @@ const App: () => ReactNode = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View style={styles.parentContainer}>
-        <RootNavigator navigationRef={(nav: any) => setNavigator(nav)} />
+        <StoreProvider>
+          <RootNavigator navigationRef={(nav: any) => setNavigator(nav)} />
+        </StoreProvider>
       </View>
     </SafeAreaView>
   );
