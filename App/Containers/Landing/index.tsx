@@ -9,6 +9,7 @@ import {
   incrementCounter,
   decrementCounter,
 } from 'App/Context/Counter/actions';
+import { loginUser } from 'App/Services';
 
 export const Landing = (props: ILandingProps) => {
   console.log('Landing : props ::', props);
@@ -25,10 +26,19 @@ export const Landing = (props: ILandingProps) => {
     decrementCounter(dispatch, {});
   };
 
+  const handleLogin = async () => {
+    const loginUserResponse = await loginUser(
+      'francisco@puertoricoproduce.com',
+      '2233'
+    );
+    console.log('handleLogin : loginUserResponse ::', loginUserResponse);
+  };
+
   return (
     <View style={styles.parentContainer}>
       <Text>{LocaleString.LandingScreen}</Text>
-      <View
+      <TouchableOpacity
+        onPress={() => handleLogin()}
         style={{
           height: 3 * MetricsSizes.hugest,
           width: 3 * MetricsSizes.hugest,

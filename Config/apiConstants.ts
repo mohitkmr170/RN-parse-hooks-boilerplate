@@ -1,9 +1,11 @@
-export default {
-  BASE_HEADER: {
+export const ApiConstant = {
+  BaseHeder: {
     'Content-Type': 'application/json',
   },
-  TIMEOUT: 20000,
-  API_END_POINT_PREFIX: '/api',
-  API_VERSION: '/v1',
-  API_END_POINTS: {},
+  TimeOut: 20000,
+  ParseAppId: 'myAppId',
+  ParseJsKey: 'jsKey',
+  ApiEndPointPrefix: '/api',
+  ApiVersion: '/v1',
+  ApiEndPoints: {},
 };
