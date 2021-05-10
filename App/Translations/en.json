@@ -1,4 +1,12 @@
 {
+  "validators": {
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required"
+  },
+  "placeHolders": {
+    "email": "Email",
+    "password": "Password"
+  },
   "landing": {
     "landingScreen": "Landing Screen"
   },

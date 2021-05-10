@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Button} from 'App/Components';
 import {IAuthLoadingProps} from 'App/Interfaces';
-import {LocaleString} from 'App/Utils';
+import {LocaleString, NavigationContainerName} from 'App/Utils';
 import {MetricsSizes, Colors} from 'App/Theme';
 
 export const AuthLoading = (props: IAuthLoadingProps) => {
@@ -18,7 +18,7 @@ export const AuthLoading = (props: IAuthLoadingProps) => {
         buttonStyle={styles.registerButtonExternalStyle}
         titleStyle={styles.registerButtonTitleStyle}
         title={LocaleString.authLoading.register}
-        disabled={true}
+        disabled={false}
         loading={false}
       />
       <Button
@@ -27,6 +27,7 @@ export const AuthLoading = (props: IAuthLoadingProps) => {
         title={LocaleString.authLoading.signIn}
         disabled={false}
         loading={false}
+        onPress={() => props.navigation.navigate(NavigationContainerName.Login)}
       />
     </View>
   );
