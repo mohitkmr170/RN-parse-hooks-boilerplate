@@ -9,7 +9,7 @@ export const Landing = (props: ILandingProps) => {
   console.log('Landing : props ::', props);
   return (
     <View style={styles.parentContainer}>
-      <Text>{LocaleString.LandingScreen}</Text>
+      <Text>{LocaleString.landing.landingScreen}</Text>
       <View
         style={{
           height: 3 * MetricsSizes.hugest,
