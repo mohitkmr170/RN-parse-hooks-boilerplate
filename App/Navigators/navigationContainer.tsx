@@ -2,6 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 import {Landing} from 'App/Containers';
+import {AuthLoading} from 'App/Navigators/authLoading';
 import {NavigationContainerName} from 'App/Utils';
 import {IRootNavigator} from 'App/Interfaces';
 
@@ -12,7 +13,7 @@ export function RootNavigator(props: IRootNavigator) {
   return (
     <NavigationContainer ref={props.navigationRef}>
       <StackNavigator.Navigator
-        initialRouteName={NavigationContainerName.Landing}
+        initialRouteName={NavigationContainerName.AuthLoading}
         screenOptions={{
           header: () => null,
           ...TransitionPresets.SlideFromRightIOS,
@@ -22,6 +23,10 @@ export function RootNavigator(props: IRootNavigator) {
           <StackNavigator.Screen
             name={NavigationContainerName.Landing}
             component={Landing}
+          />
+          <StackNavigator.Screen
+            name={NavigationContainerName.AuthLoading}
+            component={AuthLoading}
           />
         </>
         <></>

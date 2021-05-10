@@ -1,5 +1,12 @@
 import {localeString} from '../i18n';
 
 export const LocaleString = {
-  LandingScreen: localeString('landing.landingScreen'),
+  landing: {
+    landingScreen: localeString('landing.landingScreen'),
+  },
+  authLoading: {
+    produce: localeString('authLoading.produce'),
+    register: localeString('authLoading.register'),
+    signIn: localeString('authLoading.signIn'),
+  },
 };
