@@ -20,6 +20,9 @@ export const AuthLoading = (props: IAuthLoadingProps) => {
         title={LocaleString.authLoading.register}
         disabled={false}
         loading={false}
+        onPress={() =>
+          props.navigation.navigate(NavigationContainerName.SignUp)
+        }
       />
       <Button
         buttonStyle={styles.signInButtonExternalStyle}

@@ -16,6 +16,7 @@ export function Header(props: IHeaderProps) {
   const renderLeftItem = () => {
     switch (_.get(route, 'name', '')) {
       case NavigationContainerName.Login:
+      case NavigationContainerName.SignUp:
         return (
           <TouchableOpacity
             onPress={props.handleLeftButtonClick}
@@ -31,6 +32,7 @@ export function Header(props: IHeaderProps) {
   const renderCenterItem = () => {
     switch (_.get(route, 'name', '')) {
       case NavigationContainerName.Login:
+      case NavigationContainerName.SignUp:
         return <Text style={styles.title}>{_.get(props, 'title', null)}</Text>;
       default:
         return <View style={styles.dummyContainer} />;
