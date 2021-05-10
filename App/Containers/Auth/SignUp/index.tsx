@@ -9,27 +9,72 @@ import {
   AppConstants,
   NavigationContainerName,
 } from 'App/Utils';
-import {ILoginProps} from 'App/Interfaces';
+import {ISignUpProps} from 'App/Interfaces';
 
-export const Login = (props: ILoginProps) => {
+/*
+NOTES : Few more validaitons to be added later
+*/
+
+export const SignUp = (props: ISignUpProps) => {
   const {
     control,
     handleSubmit,
     formState: {errors},
   } = useForm();
 
-  const handleLogin = (value: any) => {
-    console.log('handleLogin : value ::', value);
+  const handleSignUp = (value: any) => {
+    console.log('handleSignUp : value ::', value);
     props.navigation.navigate(NavigationContainerName.Dashboard);
   };
 
   return (
     <View style={styles.parentContainer}>
       <Header
-        title={LocaleString.authLoading.signIn}
+        title={LocaleString.signUp.registerNow}
         handleLeftButtonClick={() => props.navigation.goBack()}
       />
       <View style={styles.mainContainer}>
+        <Controller
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: LocaleString.validators.emailRequired,
+            },
+          }}
+          render={({field: {onChange, onBlur, value}}) => (
+            <FormInput
+              error={errors.name}
+              errorText={errors?.name?.message}
+              onChangeText={(text: any) => onChange(text)}
+              value={value}
+              placeholder={LocaleString.placeHolders.name}
+            />
+          )}
+          name={AppConstants.forms.name}
+          defaultValue=""
+        />
+        <Controller
+          control={control}
+          rules={{
+            required: {
+              value: true,
+              message: LocaleString.validators.emailRequired,
+            },
+          }}
+          render={({field: {onChange, onBlur, value}}) => (
+            <FormInput
+              error={errors.mobile}
+              errorText={errors?.mobile?.message}
+              onChangeText={(text: any) => onChange(text)}
+              value={value}
+              keyboardType="phone-pad"
+              placeholder={LocaleString.placeHolders.mobile}
+            />
+          )}
+          name={AppConstants.forms.mobile}
+          defaultValue=""
+        />
         <Controller
           control={control}
           rules={{
@@ -73,9 +118,9 @@ export const Login = (props: ILoginProps) => {
           defaultValue=""
         />
         <Button
-          title={LocaleString.authLoading.signIn}
+          title={LocaleString.signUp.register}
           buttonStyle={styles.buttonExternalStyle}
-          onPress={handleSubmit(handleLogin)}
+          onPress={handleSubmit(handleSignUp)}
         />
       </View>
     </View>

@@ -11,3 +11,12 @@ export interface ILoginProps {
     goBack: () => void;
   };
 }
+
+export interface ISignUpProps {
+  navigation: {
+    navigate: (routeName: string) => void;
+    goBack: () => void;
+  };
+}
+
+export interface IDashboardProps {}

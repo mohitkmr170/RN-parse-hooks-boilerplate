@@ -8,6 +8,8 @@ export const LocaleString = {
   placeHolders: {
     email: localeString('placeHolders.email'),
     password: localeString('placeHolders.password'),
+    name: localeString('placeHolders.name'),
+    mobile: localeString('placeHolders.mobile'),
   },
   landing: {
     landingScreen: localeString('landing.landingScreen'),
@@ -18,4 +20,8 @@ export const LocaleString = {
     signIn: localeString('authLoading.signIn'),
   },
   login: {},
+  signUp: {
+    registerNow: localeString('signUp.registerNow'),
+    register: localeString('signUp.register'),
+  },
 };
