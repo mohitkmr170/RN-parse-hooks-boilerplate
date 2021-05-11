@@ -1,5 +1,24 @@
 {
+  "validators": {
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required"
+  },
+  "placeHolders": {
+    "email": "Email",
+    "password": "Password",
+    "name": "Full Name",
+    "mobile": "Telephone number"
+  },
   "landing": {
     "landingScreen": "Landing Screen"
+  },
+  "authLoading": {
+    "produce": "Produce App",
+    "register": "Register",
+    "signIn": "Sign In"
+  },
+  "signUp": {
+    "registerNow": "Register Now",
+    "register": "Register"
   }
 }

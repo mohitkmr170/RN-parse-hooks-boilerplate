@@ -1,3 +1,6 @@
 export const NavigationContainerName = {
-  Landing: 'LandingScreen',
+  AuthLoading: 'AuthLoadingScreen',
+  Login: 'LoginScreen',
+  SignUp: 'SignUpScreen',
+  Dashboard: 'DashboardScreen',
 };

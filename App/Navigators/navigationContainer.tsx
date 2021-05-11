@@ -1,12 +1,10 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from '@react-navigation/stack';
-import { Landing } from 'App/Containers';
-import { NavigationContainerName } from 'App/Utils';
-import { IRootNavigator } from 'App/Interfaces';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
+import {Login, SignUp, Dashboard} from 'App/Containers';
+import {AuthLoading} from 'App/Navigators';
+import {NavigationContainerName} from 'App/Utils';
+import {IRootNavigator} from 'App/Interfaces';
 
 const StackNavigator = createStackNavigator();
 
@@ -15,7 +13,7 @@ export function RootNavigator(props: IRootNavigator) {
   return (
     <NavigationContainer ref={props.navigationRef}>
       <StackNavigator.Navigator
-        initialRouteName={NavigationContainerName.Landing}
+        initialRouteName={NavigationContainerName.AuthLoading}
         screenOptions={{
           header: () => null,
           ...TransitionPresets.SlideFromRightIOS,
@@ -23,11 +21,24 @@ export function RootNavigator(props: IRootNavigator) {
         mode="modal">
         <>
           <StackNavigator.Screen
-            name={NavigationContainerName.Landing}
-            component={Landing}
+            name={NavigationContainerName.AuthLoading}
+            component={AuthLoading}
+          />
+          <StackNavigator.Screen
+            name={NavigationContainerName.Login}
+            component={Login}
+          />
+          <StackNavigator.Screen
+            name={NavigationContainerName.SignUp}
+            component={SignUp}
           />
         </>
-        <></>
+        <>
+          <StackNavigator.Screen
+            name={NavigationContainerName.Dashboard}
+            component={Dashboard}
+          />
+        </>
       </StackNavigator.Navigator>
     </NavigationContainer>
   );
