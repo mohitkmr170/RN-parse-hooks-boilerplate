@@ -1,12 +1,13 @@
 import React from 'react';
-import {View, TouchableOpacity, Text, StyleSheet} from 'react-native';
-import {useRoute} from '@react-navigation/native';
+import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import _ from 'lodash';
-import {NavigationContainerName} from 'App/Utils';
+import { NavigationContainerName } from 'App/Utils';
 
 interface IHeaderProps {
   handleLeftButtonClick?: () => void;
+  handleRightButtonClick?: () => void;
   title?: string;
 }
 
@@ -41,6 +42,12 @@ export function Header(props: IHeaderProps) {
 
   const renderRightItem = () => {
     switch (_.get(route, 'name', '')) {
+      case NavigationContainerName.Dashboard:
+        return (
+          <TouchableOpacity onPress={props.handleRightButtonClick}>
+            <Icon name="logout" size={24} />
+          </TouchableOpacity>
+        );
       default:
         return <View style={styles.dummyContainer} />;
     }
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 12,
   },
-  dummyContainer: {height: 24, width: 24},
+  dummyContainer: { height: 24, width: 24 },
   leftButton: {},
   title: {
     fontSize: 18,

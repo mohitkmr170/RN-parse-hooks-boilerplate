@@ -1,15 +1,15 @@
 import React from 'react';
-import {View} from 'react-native';
-import {styles} from './styles';
-import {Header, FormInput, Button} from 'App/Components';
-import {useForm, Controller} from 'react-hook-form';
+import { View } from 'react-native';
+import { styles } from './styles';
+import { Header, FormInput, Button } from 'App/Components';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Validators,
   LocaleString,
   AppConstants,
   NavigationContainerName,
 } from 'App/Utils';
-import {ISignUpProps} from 'App/Interfaces';
+import { ISignUpProps } from 'App/Interfaces';
 
 /*
 NOTES : Few more validaitons to be added later
@@ -19,7 +19,7 @@ export const SignUp = (props: ISignUpProps) => {
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm();
 
   const handleSignUp = (value: any) => {
@@ -42,7 +42,7 @@ export const SignUp = (props: ISignUpProps) => {
               message: LocaleString.validators.emailRequired,
             },
           }}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <FormInput
               error={errors.name}
               errorText={errors?.name?.message}
@@ -62,7 +62,7 @@ export const SignUp = (props: ISignUpProps) => {
               message: LocaleString.validators.emailRequired,
             },
           }}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <FormInput
               error={errors.mobile}
               errorText={errors?.mobile?.message}
@@ -84,7 +84,7 @@ export const SignUp = (props: ISignUpProps) => {
             },
             pattern: Validators.emailRegex,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <FormInput
               error={errors.email}
               errorText={errors?.email?.message}
@@ -105,7 +105,7 @@ export const SignUp = (props: ISignUpProps) => {
             },
             minLength: Validators.passwordMinimumLength,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <FormInput
               error={errors.password}
               errorText={errors?.password?.message}

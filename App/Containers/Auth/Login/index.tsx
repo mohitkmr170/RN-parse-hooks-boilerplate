@@ -1,26 +1,44 @@
 import React from 'react';
-import {View} from 'react-native';
-import {styles} from './styles';
-import {Header, FormInput, Button} from 'App/Components';
-import {useForm, Controller} from 'react-hook-form';
+import { View } from 'react-native';
+import { styles } from './styles';
+import { Header, FormInput, Button } from 'App/Components';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Validators,
   LocaleString,
   AppConstants,
   NavigationContainerName,
 } from 'App/Utils';
-import {ILoginProps} from 'App/Interfaces';
+import { ILoginProps } from 'App/Interfaces';
+import { loginUser } from 'App/Context/actions';
+import { useAuthDispatch } from 'App/Context/context';
+import _ from 'lodash';
 
 export const Login = (props: ILoginProps) => {
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm();
 
-  const handleLogin = (value: any) => {
+  const dispatch = useAuthDispatch();
+
+  const handleLogin = async (value: any) => {
     console.log('handleLogin : value ::', value);
-    props.navigation.navigate(NavigationContainerName.Dashboard);
+    if (value.email && value.password) {
+      try {
+        const loginResponse = await loginUser(dispatch, {
+          email: value.email,
+          password: value.password,
+        });
+        console.log('login API call : success ::', loginResponse);
+      } catch (error) {
+        console.log('login API call : catch ::');
+      }
+      props.navigation.navigate(NavigationContainerName.Dashboard);
+    } else {
+      console.log('login API call : else ::');
+    }
   };
 
   return (
@@ -39,7 +57,7 @@ export const Login = (props: ILoginProps) => {
             },
             pattern: Validators.emailRegex,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <FormInput
               error={errors.email}
               errorText={errors?.email?.message}
@@ -58,9 +76,9 @@ export const Login = (props: ILoginProps) => {
               value: true,
               message: LocaleString.validators.passwordRequired,
             },
-            minLength: Validators.passwordMinimumLength,
+            // minLength: Validators.passwordMinimumLength,
           }}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <FormInput
               error={errors.password}
               errorText={errors?.password?.message}

@@ -11,6 +11,6 @@ export const getLoggedInUserInfo = async (): Promise<any> => {
   return userInfoResponse;
 };
 
-export const logout = async (): Promise<any> => {
+export const logout = async () :Promise<any>  => {
   return Parse.User.logOut();
 };

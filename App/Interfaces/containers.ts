@@ -19,4 +19,9 @@ export interface ISignUpProps {
   };
 }
 
-export interface IDashboardProps {}
+export interface IDashboardProps {
+  navigation: {
+    navigate: (routeName: string) => void;
+    goBack: () => void;
+  };
+}
