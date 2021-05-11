@@ -1,19 +1,29 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
-import {Login, SignUp, Dashboard} from 'App/Containers';
-import {AuthLoading} from 'App/Navigators';
-import {NavigationContainerName} from 'App/Utils';
-import {IRootNavigator} from 'App/Interfaces';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
+import { Login, SignUp, Dashboard } from 'App/Containers';
+import { AuthLoading } from 'App/Navigators';
+import { NavigationContainerName } from 'App/Utils';
+import { IRootNavigator } from 'App/Interfaces';
+import { useAuthState } from 'App/Context/context';
+import _ from 'lodash';
 
 const StackNavigator = createStackNavigator();
 
 export function RootNavigator(props: IRootNavigator) {
-  console.log('RootNavigator', typeof props.navigationRef);
+  const userDetails = useAuthState();
+  const isUserAuthenticated = userDetails.user || false;
   return (
     <NavigationContainer ref={props.navigationRef}>
       <StackNavigator.Navigator
-        initialRouteName={NavigationContainerName.AuthLoading}
+        initialRouteName={
+          isUserAuthenticated
+            ? NavigationContainerName.Dashboard
+            : NavigationContainerName.AuthLoading
+        }
         screenOptions={{
           header: () => null,
           ...TransitionPresets.SlideFromRightIOS,

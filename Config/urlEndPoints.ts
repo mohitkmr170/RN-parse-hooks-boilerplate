@@ -2,8 +2,8 @@
 To get urlEndPoint using current environment
 */
 
-const developmentApiUrl = '';
+const development = 'https://producer-backend-dev.herokuapp.com/1';
 
-export const url = {
-  developmentApiUrl: developmentApiUrl,
+export const ApiBaseUrl = {
+  development: development,
 };

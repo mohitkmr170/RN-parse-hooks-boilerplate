@@ -1,5 +1,5 @@
 import React from 'react';
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -7,9 +7,10 @@ import {
   View,
   StyleSheet,
 } from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {RootNavigator} from 'App/Navigators/navigationContainer';
-import {setNavigator} from 'App/Navigators/navigationServices';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { RootNavigator } from 'App/Navigators/navigationContainer';
+import { setNavigator } from 'App/Navigators/navigationServices';
+import { AuthProvider } from 'App/Context/context';
 
 const App: () => ReactNode = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,14 +23,16 @@ const App: () => ReactNode = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <View style={styles.parentContainer}>
-        <RootNavigator navigationRef={(nav: any) => setNavigator(nav)} />
+        <AuthProvider>
+          <RootNavigator navigationRef={(nav: any) => setNavigator(nav)} />
+        </AuthProvider>
       </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  parentContainer: {flex: 1},
+  parentContainer: { flex: 1 },
 });
 
 export default App;

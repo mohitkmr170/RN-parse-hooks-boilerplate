@@ -1,4 +1,4 @@
-import {localeString} from '../i18n';
+import { localeString } from '../i18n';
 
 export const LocaleString = {
   validators: {
