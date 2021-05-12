@@ -1,13 +1,13 @@
 import { ActionTypes } from './actionTypes';
 
 type InitialStateType = {
-  user: { email: string };
+  user: string;
   token: string;
   loading: boolean;
   errorMessage: string;
 };
 export const initialState = {
-  user: { email: '' },
+  user: null,
   token: '',
   loading: false,
   errorMessage: null,

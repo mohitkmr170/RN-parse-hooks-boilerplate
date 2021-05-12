@@ -10,6 +10,8 @@ import {
   NavigationContainerName,
 } from 'App/Utils';
 import { ISignUpProps } from 'App/Interfaces';
+import { signUpUser } from 'App/Context/actions';
+import { useAuthDispatch } from 'App/Context/context';
 
 /*
 NOTES : Few more validaitons to be added later
@@ -22,9 +24,22 @@ export const SignUp = (props: ISignUpProps) => {
     formState: { errors },
   } = useForm();
 
-  const handleSignUp = (value: any) => {
+  const dispatch = useAuthDispatch();
+
+  const handleSignUp = async (value: any) => {
     console.log('handleSignUp : value ::', value);
-    props.navigation.navigate(NavigationContainerName.Dashboard);
+    try {
+      const signUpResponse = await signUpUser(dispatch, {
+        name: value.name,
+        email: value.email,
+        password: value.password,
+        phone: value.mobile,
+      });
+      console.log('signUpResponse ::', signUpResponse);
+      props.navigation.navigate(NavigationContainerName.Dashboard);
+    } catch (error) {
+      console.log('SignUp');
+    }
   };
 
   return (

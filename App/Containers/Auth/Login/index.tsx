@@ -32,10 +32,10 @@ export const Login = (props: ILoginProps) => {
           password: value.password,
         });
         console.log('login API call : success ::', loginResponse);
+        props.navigation.navigate(NavigationContainerName.Dashboard);
       } catch (error) {
         console.log('login API call : catch ::');
       }
-      props.navigation.navigate(NavigationContainerName.Dashboard);
     } else {
       console.log('login API call : else ::');
     }
