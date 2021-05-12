@@ -1,12 +1,12 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {Button} from 'App/Components';
-import {IAuthLoadingProps} from 'App/Interfaces';
-import {LocaleString, NavigationContainerName} from 'App/Utils';
-import {MetricsSizes, Colors} from 'App/Theme';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { Button } from 'App/Components';
+import { IAuthLoadingProps } from 'App/Interfaces';
+import { LocaleString, NavigationContainerName } from 'App/Utils';
+import { MetricsSizes, Colors } from 'App/Theme';
+import { useAuthState } from 'App/Context/context';
 
 export const AuthLoading = (props: IAuthLoadingProps) => {
-  console.log('AuthLoading : props ::', props);
   return (
     <View style={styles.parentContainer}>
       <View style={styles.mainContainer}>
@@ -37,8 +37,8 @@ export const AuthLoading = (props: IAuthLoadingProps) => {
 };
 
 const styles = StyleSheet.create({
-  parentContainer: {flex: 1},
-  mainContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  parentContainer: { flex: 1 },
+  mainContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   produceText: {
     fontSize: MetricsSizes.larger,
     lineHeight: MetricsSizes.moderateLarge,
