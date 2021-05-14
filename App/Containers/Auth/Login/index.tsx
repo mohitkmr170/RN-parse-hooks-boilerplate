@@ -13,6 +13,8 @@ import { ILoginProps } from 'App/Interfaces';
 import { loginUser } from 'App/Context/actions';
 import { useAuthDispatch } from 'App/Context/context';
 import _ from 'lodash';
+import { navigateAndReset } from 'App/Navigators/navigationServices';
+import { getLoggedInUserInfo } from 'App/Services';
 
 export const Login = (props: ILoginProps) => {
   const {
@@ -32,7 +34,7 @@ export const Login = (props: ILoginProps) => {
           password: value.password,
         });
         console.log('login API call : success ::', loginResponse);
-        props.navigation.navigate(NavigationContainerName.Dashboard);
+        navigateAndReset('AppStackWithDrawer');
       } catch (error) {
         console.log('login API call : catch ::');
       }

@@ -12,7 +12,7 @@ export const Dashboard = (props: IDashboardProps) => {
   const handleLogout = () => {
     try {
       logoutUserTest(dispatch);
-      props.navigation.navigate(NavigationContainerName.AuthLoading);
+      props.navigation.navigate(NavigationContainerName.Landing);
     } catch (error) {
       Alert.alert('Something went wrong');
     }

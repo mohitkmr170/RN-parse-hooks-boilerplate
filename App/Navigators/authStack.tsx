@@ -4,23 +4,23 @@ import {
   TransitionPresets,
 } from '@react-navigation/stack';
 import { NavigationContainerName } from 'App/Utils';
-import { AuthLoading } from './authLoading';
 import { Login, SignUp } from 'App/Containers';
+import { Landing } from 'App/Containers/Auth/Landing';
 
 const StackNavigator = createStackNavigator();
 
 export const AuthStack = () => {
   return (
     <StackNavigator.Navigator
-      initialRouteName={NavigationContainerName.AuthLoading}
+      initialRouteName={NavigationContainerName.Landing}
       screenOptions={{
         header: () => null,
         ...TransitionPresets.SlideFromRightIOS,
       }}
       mode="modal">
       <StackNavigator.Screen
-        name={NavigationContainerName.AuthLoading}
-        component={AuthLoading}
+        name={NavigationContainerName.Landing}
+        component={Landing}
       />
       <StackNavigator.Screen
         name={NavigationContainerName.Login}

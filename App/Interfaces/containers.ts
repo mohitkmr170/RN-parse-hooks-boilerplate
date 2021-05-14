@@ -1,5 +1,9 @@
-export interface ILandingProps {}
 export interface IAuthLoadingProps {
+  navigation: {
+    navigate: (routeName: string) => void;
+  };
+}
+export interface ILandingProps {
   navigation: {
     navigate: (routeName: string) => void;
   };
