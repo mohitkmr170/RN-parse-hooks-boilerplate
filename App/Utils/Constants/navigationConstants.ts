@@ -3,4 +3,6 @@ export const NavigationContainerName = {
   Login: 'LoginScreen',
   SignUp: 'SignUpScreen',
   Dashboard: 'DashboardScreen',
+  SideBar: 'SideBarScreen',
+  Profile: 'ProfileScreen',
 };

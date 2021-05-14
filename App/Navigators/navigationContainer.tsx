@@ -1,65 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import {
-  createStackNavigator,
-  TransitionPresets,
-} from '@react-navigation/stack';
-import { Login, SignUp, Dashboard } from 'App/Containers';
-import { AuthLoading } from 'App/Navigators';
-import { NavigationContainerName } from 'App/Utils';
-import { IRootNavigator } from 'App/Interfaces';
 import _ from 'lodash';
+import { SideBar } from 'App/Containers';
+import { IRootNavigator } from 'App/Interfaces';
 import { useAuthState } from 'App/Context/context';
-import { View, ActivityIndicator } from 'react-native';
-import { styles } from 'App/Containers/Auth/Login/styles';
+import { AuthStack } from './authStack';
+import { AppStack } from './appStack';
 
-const StackNavigator = createStackNavigator();
+const DrawerNavigator = createDrawerNavigator();
 
+/**
+ *
+ * TODO: User verification based Auth-App Stack
+ * @export
+ * @param {IRootNavigator} props
+ * @return {*} Root Navigation Container
+ */
 export function RootNavigator(props: IRootNavigator) {
   const [isLoading, setIsLoading] = useState(true);
   const userDetails = useAuthState();
-  useEffect(() => {
-    const isUserAuthenticated = userDetails.user || false;
-    if (isUserAuthenticated) setIsLoading(false);
-    // else setIsLoading(false);
-  }, [userDetails]);
-  if (isLoading)
-    return (
-      <View style={styles.mainContainers}>
-        <ActivityIndicator size="large" />
-      </View>
-    );
-  else
-    return (
-      <NavigationContainer ref={props.navigationRef}>
-        <StackNavigator.Navigator
-          initialRouteName={NavigationContainerName.AuthLoading}
-          screenOptions={{
-            header: () => null,
-            ...TransitionPresets.SlideFromRightIOS,
-          }}
-          mode="modal">
-          <>
-            <StackNavigator.Screen
-              name={NavigationContainerName.AuthLoading}
-              component={AuthLoading}
-            />
-            <StackNavigator.Screen
-              name={NavigationContainerName.Login}
-              component={Login}
-            />
-            <StackNavigator.Screen
-              name={NavigationContainerName.SignUp}
-              component={SignUp}
-            />
-          </>
-          <>
-            <StackNavigator.Screen
-              name={NavigationContainerName.Dashboard}
-              component={Dashboard}
-            />
-          </>
-        </StackNavigator.Navigator>
-      </NavigationContainer>
-    );
+
+  // useEffect(() => {
+  //   const isUserAuthenticated = userDetails.user || false;
+  //   if (isUserAuthenticated) setIsLoading(false);
+  //   // else setIsLoading(false);
+  // }, [userDetails]);
+  // if (isLoading)
+  //   return (
+  //     <View style={styles.mainContainers}>
+  //       <ActivityIndicator size="large" />
+  //     </View>
+  //   );
+  // else
+  return (
+    <NavigationContainer ref={props.navigationRef}>
+      {true ? (
+        <DrawerNavigator.Navigator
+          drawerContent={(props: any) => <SideBar {...props} />}>
+          <DrawerNavigator.Screen name="AppStateScreen" component={AppStack} />
+        </DrawerNavigator.Navigator>
+      ) : (
+        <AuthStack />
+      )}
+    </NavigationContainer>
+  );
 }
