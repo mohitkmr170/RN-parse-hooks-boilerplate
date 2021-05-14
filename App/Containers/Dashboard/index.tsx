@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Alert, AsyncStorage } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { styles } from './styles';
 import { IDashboardProps } from 'App/Interfaces';
 import { Header } from 'App/Components';
