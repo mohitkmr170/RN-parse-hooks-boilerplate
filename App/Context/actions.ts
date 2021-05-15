@@ -1,6 +1,6 @@
 import { ActionTypes } from './actionTypes';
 import { login, getLoggedInUserInfo, logout, signup } from 'App/Services';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export async function loginUser(
   dispatch: React.Dispatch<any>,
@@ -46,7 +46,7 @@ export async function logoutUserTest(
   dispatch: React.Dispatch<any>,
 ): Promise<any> {
   dispatch({ type: ActionTypes.LOGOUT });
-  logout();
-  AsyncStorage.removeItem('currentUser');
-  AsyncStorage.removeItem('token');
+  await logout();
+  // AsyncStorage.removeItem('currentUser');
+  // AsyncStorage.removeItem('token');
 }

@@ -13,12 +13,14 @@ export const LocaleString = {
   },
   landing: {
     landingScreen: localeString('landing.landingScreen'),
-  },
-  authLoading: {
     produce: localeString('authLoading.produce'),
     register: localeString('authLoading.register'),
     signIn: localeString('authLoading.signIn'),
   },
+  header: {
+    produce: localeString('header.produce'),
+  },
+  authLoading: {},
   login: {},
   signUp: {
     registerNow: localeString('signUp.registerNow'),

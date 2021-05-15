@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar, SafeAreaView } from 'react-native';
 import { styles } from './styles';
 import { Header, FormInput, Button } from 'App/Components';
 import { useForm, Controller } from 'react-hook-form';
@@ -12,6 +12,7 @@ import {
 import { ISignUpProps } from 'App/Interfaces';
 import { signUpUser } from 'App/Context/actions';
 import { useAuthDispatch } from 'App/Context/context';
+import { appStyles } from 'App/Utils/globalStyles';
 
 /*
 NOTES : Few more validaitons to be added later
@@ -44,6 +45,7 @@ export const SignUp = (props: ISignUpProps) => {
 
   return (
     <View style={styles.parentContainer}>
+      <SafeAreaView style={appStyles.safeAreaTopStyleNoColor} />
       <Header
         title={LocaleString.signUp.registerNow}
         handleLeftButtonClick={() => props.navigation.goBack()}

@@ -2,8 +2,10 @@ import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import IconIonicons from 'react-native-vector-icons/Ionicons';
 import _ from 'lodash';
-import { NavigationContainerName } from 'App/Utils';
+import { NavigationContainerName, LocaleString } from 'App/Utils';
+import { MetricsSizes, Colors } from 'App/Theme';
 
 interface IHeaderProps {
   handleLeftButtonClick?: () => void;
@@ -16,13 +18,33 @@ export function Header(props: IHeaderProps) {
 
   const renderLeftItem = () => {
     switch (_.get(route, 'name', '')) {
+      case NavigationContainerName.Cart:
+      case NavigationContainerName.CategoryItemList:
       case NavigationContainerName.Login:
       case NavigationContainerName.SignUp:
         return (
           <TouchableOpacity
             onPress={props.handleLeftButtonClick}
             style={styles.leftButton}>
-            <Icon name="left" size={24} />
+            <Icon
+              name="left"
+              size={24}
+              color={
+                _.get(route, 'name', '') === NavigationContainerName.Login ||
+                _.get(route, 'name', '') === NavigationContainerName.SignUp
+                  ? null
+                  : Colors.white
+              }
+            />
+          </TouchableOpacity>
+        );
+      case NavigationContainerName.Profile:
+      case NavigationContainerName.Dashboard:
+        return (
+          <TouchableOpacity
+            onPress={props.handleLeftButtonClick}
+            style={styles.leftButton}>
+            <IconIonicons name="menu-outline" size={24} color={Colors.white} />
           </TouchableOpacity>
         );
       default:
@@ -32,9 +54,26 @@ export function Header(props: IHeaderProps) {
 
   const renderCenterItem = () => {
     switch (_.get(route, 'name', '')) {
+      case NavigationContainerName.Dashboard:
+        return (
+          <Text style={styles.produceText}>{LocaleString.header.produce}</Text>
+        );
+      case NavigationContainerName.Cart:
+      case NavigationContainerName.Profile:
       case NavigationContainerName.Login:
       case NavigationContainerName.SignUp:
-        return <Text style={styles.title}>{_.get(props, 'title', null)}</Text>;
+        return (
+          <Text
+            style={[
+              styles.title,
+              !(
+                _.get(route, 'name', '') === NavigationContainerName.Login ||
+                _.get(route, 'name', '') === NavigationContainerName.SignUp
+              ) && { color: Colors.white },
+            ]}>
+            {_.get(props, 'title', null)}
+          </Text>
+        );
       default:
         return <View style={styles.dummyContainer} />;
     }
@@ -42,10 +81,11 @@ export function Header(props: IHeaderProps) {
 
   const renderRightItem = () => {
     switch (_.get(route, 'name', '')) {
+      case NavigationContainerName.CategoryItemList:
       case NavigationContainerName.Dashboard:
         return (
           <TouchableOpacity onPress={props.handleRightButtonClick}>
-            <Icon name="logout" size={24} />
+            <IconIonicons name="basket-sharp" size={24} color={Colors.white} />
           </TouchableOpacity>
         );
       default:
@@ -54,7 +94,17 @@ export function Header(props: IHeaderProps) {
   };
 
   return (
-    <View style={styles.parentContainer}>
+    <View
+      style={[
+        styles.parentContainer,
+        {
+          backgroundColor:
+            _.get(route, 'name', '') === NavigationContainerName.Login ||
+            _.get(route, 'name', '') === NavigationContainerName.SignUp
+              ? ''
+              : Colors.limeGreen,
+        },
+      ]}>
       {renderLeftItem()}
       {renderCenterItem()}
       {renderRightItem()}
@@ -76,5 +126,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 22,
     fontWeight: '500',
+  },
+  produceText: {
+    fontSize: MetricsSizes.larger,
+    lineHeight: MetricsSizes.moderateLarge,
+    color: Colors.white,
   },
 });

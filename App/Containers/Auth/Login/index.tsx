@@ -1,18 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import { styles } from './styles';
 import { Header, FormInput, Button } from 'App/Components';
 import { useForm, Controller } from 'react-hook-form';
-import {
-  Validators,
-  LocaleString,
-  AppConstants,
-  NavigationContainerName,
-} from 'App/Utils';
+import { Validators, LocaleString, AppConstants } from 'App/Utils';
 import { ILoginProps } from 'App/Interfaces';
 import { loginUser } from 'App/Context/actions';
 import { useAuthDispatch } from 'App/Context/context';
 import _ from 'lodash';
+import { navigateAndReset } from 'App/Navigators/navigationServices';
+
+/**
+ *  TODO: Add Forgot password CTA
+ */
 
 export const Login = (props: ILoginProps) => {
   const {
@@ -32,7 +32,7 @@ export const Login = (props: ILoginProps) => {
           password: value.password,
         });
         console.log('login API call : success ::', loginResponse);
-        props.navigation.navigate(NavigationContainerName.Dashboard);
+        navigateAndReset('AppStackWithDrawer');
       } catch (error) {
         console.log('login API call : catch ::');
       }
@@ -43,8 +43,9 @@ export const Login = (props: ILoginProps) => {
 
   return (
     <View style={styles.parentContainer}>
+      <SafeAreaView style={{ flex: 0 }} />
       <Header
-        title={LocaleString.authLoading.signIn}
+        title={'Sign In'}
         handleLeftButtonClick={() => props.navigation.goBack()}
       />
       <View style={styles.mainContainer}>
@@ -97,5 +98,6 @@ export const Login = (props: ILoginProps) => {
         />
       </View>
     </View>
+    // </SafeAreaView>
   );
 };

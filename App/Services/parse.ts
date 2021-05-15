@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ApiConstant, ApiBaseUrl } from '../../Config';
 /*
 Parse : Powerful JavaScript SDK for Parse Server backend from Client App
@@ -5,7 +6,6 @@ Parse : Powerful JavaScript SDK for Parse Server backend from Client App
 let Parse: any;
 Parse = require('parse/react-native.js');
 
-const AsyncStorage = require('react-native').AsyncStorage;
 Parse.setAsyncStorage(AsyncStorage);
 
 Parse.initialize(ApiConstant.ParseAppId, ApiConstant.ParseJsKey);
