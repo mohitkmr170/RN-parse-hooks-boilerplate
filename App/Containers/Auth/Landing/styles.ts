@@ -4,10 +4,10 @@ import { MetricsSizes, Colors } from 'App/Theme';
 export const styles = StyleSheet.create({
   parentContainer: { flex: 1 },
   mainContainer: { flex: 1 },
-  produceText: {
+  appText: {
     fontSize: MetricsSizes.larger,
     lineHeight: MetricsSizes.moderateLarge,
-    marginTop: 24,
+    marginTop: 80,
     textAlign: 'center',
   },
   registerButtonExternalStyle: {

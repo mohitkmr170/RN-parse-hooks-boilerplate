@@ -56,7 +56,7 @@ export function Header(props: IHeaderProps) {
     switch (_.get(route, 'name', '')) {
       case NavigationContainerName.Dashboard:
         return (
-          <Text style={styles.produceText}>{LocaleString.header.produce}</Text>
+          <Text style={styles.appTitle}>React Native Boilerplate</Text>
         );
       case NavigationContainerName.Cart:
       case NavigationContainerName.Profile:
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     fontWeight: '500',
   },
-  produceText: {
+  appTitle: {
     fontSize: MetricsSizes.larger,
     lineHeight: MetricsSizes.moderateLarge,
     color: Colors.white,

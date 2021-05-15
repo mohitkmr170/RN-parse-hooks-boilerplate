@@ -7,7 +7,6 @@ import { AuthProvider } from 'App/Context/context';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 /**
- * TODO: Remove all absolute styling values
  * App Container
  * @return {*}
  */

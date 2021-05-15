@@ -59,7 +59,7 @@ export const SideBar = (props: IProps) => {
     <View style={appStyles.parentContainerNoMargin}>
       <SafeAreaView style={appStyles.safeAreaTopStyleNoColor} />
       <View style={styles.drawerContent}>
-        <Text style={styles.produceText}>{LocaleString.header.produce}</Text>
+        <Text style={styles.appText}>{LocaleString.header.rn}</Text>
       </View>
       <DrawerContentScrollView {...props}>
         {SIDEBAR_ITEMS.map((item, index) => (

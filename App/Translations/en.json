@@ -10,13 +10,13 @@
     "mobile": "Telephone number"
   },
   "header": {
-    "produce": "Produce"
+    "rn": "RN"
   },
   "landing": {
     "landingScreen": "Landing Screen"
   },
   "authLoading": {
-    "produce": "Produce App",
+    "rn": "RN App",
     "register": "Register",
     "signIn": "Sign In"
   },

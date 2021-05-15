@@ -10,10 +10,6 @@ import { useAuthDispatch } from 'App/Context/context';
 import _ from 'lodash';
 import { navigateAndReset } from 'App/Navigators/navigationServices';
 
-/**
- *  TODO: Add Forgot password CTA
- */
-
 export const Login = (props: ILoginProps) => {
   const {
     control,
@@ -26,6 +22,7 @@ export const Login = (props: ILoginProps) => {
   const handleLogin = async (value: any) => {
     console.log('handleLogin : value ::', value);
     if (value.email && value.password) {
+      navigateAndReset('AppStackWithDrawer');
       try {
         const loginResponse = await loginUser(dispatch, {
           email: value.email,
@@ -98,6 +95,5 @@ export const Login = (props: ILoginProps) => {
         />
       </View>
     </View>
-    // </SafeAreaView>
   );
 };

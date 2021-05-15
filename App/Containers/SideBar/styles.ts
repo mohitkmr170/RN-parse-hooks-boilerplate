@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
   },
-  produceText: {
+  appText: {
     fontSize: MetricsSizes.larger,
     lineHeight: MetricsSizes.moderateLarge,
   },

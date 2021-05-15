@@ -13,9 +13,10 @@ import { ISignUpProps } from 'App/Interfaces';
 import { signUpUser } from 'App/Context/actions';
 import { useAuthDispatch } from 'App/Context/context';
 import { appStyles } from 'App/Utils/globalStyles';
+import { navigateAndReset } from 'App/Navigators/navigationServices';
 
 /*
-NOTES : Few more validaitons to be added later
+NOTES : Few more validations to be added later
 */
 
 export const SignUp = (props: ISignUpProps) => {
@@ -29,6 +30,7 @@ export const SignUp = (props: ISignUpProps) => {
 
   const handleSignUp = async (value: any) => {
     console.log('handleSignUp : value ::', value);
+    navigateAndReset(NavigationContainerName.Dashboard);
     try {
       const signUpResponse = await signUpUser(dispatch, {
         name: value.name,
@@ -37,7 +39,7 @@ export const SignUp = (props: ISignUpProps) => {
         phone: value.mobile,
       });
       console.log('signUpResponse ::', signUpResponse);
-      props.navigation.navigate(NavigationContainerName.Dashboard);
+      navigateAndReset(NavigationContainerName.Dashboard);
     } catch (error) {
       console.log('SignUp');
     }

@@ -77,7 +77,7 @@ export function RootNavigator(props: IRootNavigator) {
   else
     return (
       <NavigationContainer ref={props.navigationRef}>
-        {userDetails.user ? (
+        {userDetails.user || true ? (
           <StackNavigator.Navigator
             initialRouteName={NavigationContainerName.AppStack}
             screenOptions={{

@@ -29,24 +29,3 @@ export interface IDashboardProps {
     goBack: () => void;
   };
 }
-
-export interface ICategoryItemListProps {
-  navigation: {
-    navigate: (routeName: string) => void;
-    goBack: () => void;
-  };
-}
-
-export interface IProfileProps {
-  navigation: {
-    navigate: (routeName: string) => void;
-    goBack: () => void;
-  };
-}
-
-export interface ICartProps {
-  navigation: {
-    navigate: (routeName: string) => void;
-    goBack: () => void;
-  };
-}
