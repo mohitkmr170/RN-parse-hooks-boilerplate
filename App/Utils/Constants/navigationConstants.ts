@@ -8,4 +8,6 @@ export const NavigationContainerName = {
   Profile: 'ProfileScreen',
   AppStack: 'AppStackScreen',
   AppStackWithDrawer: 'AppStackWithDrawerScreen',
+  CategoryItemList: 'CategoryItemListScreen',
+  Cart: 'CartScreen',
 };

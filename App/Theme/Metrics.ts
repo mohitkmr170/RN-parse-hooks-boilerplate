@@ -1,4 +1,8 @@
-import {moderateScale} from 'react-native-size-matters/extend';
+import { moderateScale } from 'react-native-size-matters/extend';
+
+/**
+ * TODO: Add better nomenclature (i.e, ms24)
+ */
 
 export const MetricsSizes = {
   tiny: moderateScale(4),

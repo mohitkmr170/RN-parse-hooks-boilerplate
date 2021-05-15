@@ -48,6 +48,7 @@ export function RootNavigator(props: IRootNavigator) {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     startUp();
   }, []);

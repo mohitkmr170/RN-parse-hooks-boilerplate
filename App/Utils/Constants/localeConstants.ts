@@ -17,6 +17,9 @@ export const LocaleString = {
     register: localeString('authLoading.register'),
     signIn: localeString('authLoading.signIn'),
   },
+  header: {
+    produce: localeString('header.produce'),
+  },
   authLoading: {},
   login: {},
   signUp: {
